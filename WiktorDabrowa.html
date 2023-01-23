@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="WiktorDabrowa.js"></script>    
+    <link rel="stylesheet" href="WiktorDabrowa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main class="main">
+      <nav class="nav">
+        <button class="button" data-page="1" disabled>Landing</button>
+        <button class="button" data-page="2">About me</button>
+        <button class="button" data-page="3">Skills</button>
+        <button class="button" data-page="4">Projects</button>
+        <button class="button" data-page="5">Hobby</button>
+        <button class="button" data-page="6">Contact</button>
+      </nav>
+      <section class="page rotated" id="page-1" data-already_shown>
+        <div class="page-1--photo-bg">
+          <img class='page-1--photo' src="photos/strona2.png">
+        </div>        
+        <h1 id='page-1--name'class="page-1--name"></h1>
+        <p id="page-1--text"></p>
+      </section>
+      <section class="page" id="page-2">
+        <h1 class="page-2--heading type" id="page-2--heading">About Me</h1>
+        <div class="page-2--division">
+          <div class="page-2--text type" id="page-2--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores repudiandae quidem quaerat itaque temporibus, neque ex rem, sint voluptatum praesentium consequatur molestiae assumenda dolor architecto. Quo facere, maxime magnam in eveniet ratione? Cupiditate ex porro consequatur tenetur iure officiis atque vero quo reprehenderit. In ullam facere repudiandae laudantium similique non?</div>
+          <div class="page-2--photo-bg">
+            <img src='photos/Strona.png' class="page-2--photo">
+          </div>
+        </div>
+      </section>
+      <section class="page" id="page-3">
+        <h1 class='page-3--heading'>Skills</h1>
+        <div class="page-3--skills-container">
+          <div class="skill">React</div>
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">Django</div>
+          <div class="skill">Python</div>
+          <div class="skill">JS</div>
+        </div>
+      </section>
+      <section class="page" id="page-4">Page4</section>
+      <section class="page" id="page-5">Page5</section>
+      <section class="page" id="page-6">Page6</section>
+    </div>
+  </main>
+</html>
+

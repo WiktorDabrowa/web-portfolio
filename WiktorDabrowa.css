@@ -1,0 +1,254 @@
+@keyframes blink {
+  0% {opacity:0}
+  49% {opacity:0}
+  50% {opacity:1}
+  100% {opacity:1}
+}
+@keyframes appear {
+  from { opacity:0}
+  to {opacity:1}
+}
+@keyframes slide {
+  from {transform:translate(200vw)}
+  to {transform:translate(0)}
+}
+body{
+  padding:0;
+  margin:0;
+  font-family: 'Source Code Pro', monospace;
+}
+.main {
+  height:100vh;
+  background-color: rgb(0, 0, 0, 0.9);
+  margin:0;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  position:relative;
+  color:white;
+  overflow:hidden;
+}
+.main > * {
+  animation:appear 3s forwards 
+}
+.page {
+  width:100vw;
+  height:100vh;
+  margin:0;
+  padding-top:4rem;
+  position:absolute;
+  color:white;
+  transform:translate(150vw, 150vh) rotate(60deg);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition:2s ease-in-out;
+  font-size:20px;
+  padding-left:50px;
+}
+.nav{
+  display:flex;
+  flex-direction: row;
+  z-index:2;
+  height:4rem;
+  gap:4rem;
+}
+.page.rotated{
+  transform:translate(0,0) rotate(0)
+}
+.page.post-rotated{
+  transform:translate(-150vw,150vh) rotate(-60deg)
+}
+.button{
+  background-color: transparent;
+  border:none;
+  color:white;
+  font-family: 'Source Code Pro', monospace;
+  transition:1s;
+  position:relative
+}
+.nav > button:nth-child(1):disabled, .button:nth-child(1):hover{
+  color:palevioletred;
+}
+.nav > button:nth-child(2):disabled, .button:nth-child(2):hover{
+  color:palegreen
+}
+.nav > button:nth-child(3):disabled, .button:nth-child(3):hover{
+  color:paleturquoise
+}
+.nav > button:nth-child(4):disabled, .button:nth-child(4):hover{
+  color:cornflowerblue
+}
+.nav > button:nth-child(5):disabled, .button:nth-child(5):hover{
+  color:mediumpurple
+}
+.nav > button:nth-child(6):disabled, .button:nth-child(6):hover{
+  color:palegoldenrod
+}
+.button:nth-child(1):after{
+  background-color: palevioletred;
+}
+.button:nth-child(2):after{
+  background-color: palegreen;
+}
+.button:nth-child(3):after{
+  background-color: paleturquoise;
+}
+.button:nth-child(4):after{
+  background-color: cornflowerblue;
+}
+.button:nth-child(5):after{
+  background-color: mediumpurple;
+}
+.button:nth-child(6):after{
+  background-color: palegoldenrod;
+}
+.button::after{
+  content:'';
+  height:1px;
+  position:absolute;
+  bottom:15px;
+  width:0;
+  left:0;
+  right:0;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+.button:disabled::after{
+  width:100%
+}
+
+/* PAGE 1 */
+#page-1{
+  display:flex;
+  flex-direction: column;
+}
+.page-1--photo-bg{
+  background-color:palevioletred;
+  height:450px;
+  width:450px;
+  transform: translate(200vw);
+  position:absolute;
+  left:-21px;
+  top:100px;
+  border-radius:50%;
+  overflow: hidden;
+  z-index:1;
+  animation:slide 2s forwards 1s ease-in-out
+}
+.page-1--photo{
+  position:absolute;
+  top:15px;
+  height:450px;
+  width:450px;
+  z-index:2;
+  object-fit:scale-down;
+  filter:grayscale(100%);
+  border-radius:50%;
+  background-color:transparent;
+  transition:1s;
+}
+.page-1--photo:hover{
+  filter:grayscale(0%)
+}
+.page-1--name{
+  letter-spacing: 10px;
+  width:1000px;
+  margin-left:300px;
+  height:5rem;
+}
+.page-1--name:after{
+  content:'.';
+  opacity:0;
+  color:palevioletred;
+  background-color: palevioletred;
+  animation:blink infinite alternate 0.5s 2s
+}
+#page-1--text{
+  z-index:1;
+  width:1000px;
+  margin-left:300px;
+  color:white;
+  min-height: 10rem;
+  mix-blend-mode:difference;
+}
+#page-1--text:after{
+  content:'.';
+  opacity:0;
+  color:palevioletred;
+  background-color: palevioletred;
+  animation:blink infinite alternate 0.5s 2s
+}
+/* Page 2 - About me */
+#page-2 {
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.page-2--heading::after{
+  content:'.';
+  color:palegreen;
+  background-color: palegreen;
+  animation:blink infinite alternate 0.5s
+}
+.page-2--division{
+  display:flex;
+  flex-direction: row;
+}
+.page-2--text{
+  flex:3
+}
+.page-2--text::after{
+  content:'.';
+  animation:blink infinite alternate 0.5s;
+  color: palegreen;
+  background-color: palegreen;
+}
+.page-2--photo-bg{
+  position:relative;
+  height:450px;
+  width:450px;
+  border-radius:50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: palegreen;
+  overflow:hidden
+}
+.page-2--photo{
+  position:absolute;
+  top:15px;
+  width:450px;
+  height:450px;
+  object-fit:scale-down;
+  filter:grayscale(100%) hue-rotate(90deg);
+  border-radius:50%;
+}
+.page-2--photo:hover{
+  filter:grayscale(0%)
+}
+/* Page 3 - Skills */
+
+#page-3{
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.page-3--heading::after{
+  content:'.';
+  color:paleturquoise;
+  background-color: paleturquoise;
+  animation:blink infinite alternate 0.5s
+}
+.page-3--skills-container{
+  display:grid;
+
+}
+.skill{
+  height:70px;
+  display:flex;
+  border:1px solid white
+}
