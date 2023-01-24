@@ -15,9 +15,16 @@ function render(element){
     // Starts appearing animation
     // descdendant of element must contain 'type' class
     // and an id
+    if (element.id === 'page-4') {
+        projects = element.querySelectorAll('.project')
+        for (i=0; i<projects.length; i++) {
+            projects[i].style.animation = `slide 1s forwards ${ 1 + i*0.2}s`
+        }
+    }
     for (const descendant of element.querySelectorAll('*')) {
         console.log(descendant)
         if (descendant.classList.contains('type')){
+            console.log(descendant)
             type(descendant.innerHTML, descendant.id, 25)
         }
     }
