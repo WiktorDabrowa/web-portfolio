@@ -229,6 +229,7 @@ body{
   object-fit:scale-down;
   filter:grayscale(100%) hue-rotate(90deg);
   border-radius:50%;
+  transition:1s;
 }
 .page-2--photo:hover{
   filter:grayscale(0%)
@@ -271,12 +272,18 @@ body{
   background-color: transparent;
   transition:2s;
   flex:0;
+  border-radius: 30px;
   position:relative;
-  border-radius:10px
+}
+.page-3--png{
+  height:80%;
+  object-fit:scale-down;
+  padding-left:1rem;
 }
 .skill-diff{
   flex:1;
   background-color: rgb(25,25,25);
+
 }
 .skill::after{
   content:'';
@@ -292,7 +299,7 @@ body{
   content:'Basic'
 }
 [data-level = '2']::after{
-  content:'Good'
+  content:'Junior'
 }
 [data-level = '3']::after{
   content:'Intermediate'
@@ -305,18 +312,70 @@ body{
 }
 /* Page 4 - Projects */
 #page-4{
-  padding:0
+  padding:0;
 }
 .projects{
-  display:grid;
-  grid-auto-rows: 100px;
+  display:flex;
+  flex-direction: column;
   gap:10px;
-  width:100%
+  height:80%;
+  width:95%;
+  transition:1s
 }
 .project{
   border:1px solid white;
   transform:translateX(200vw);
   color:white;
-  background-color: cornflowerblue;
-  transition:1s
+  transition:2s ease-in-out;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  position:relative;
+  flex-basis:30px
 }
+.project::-webkit-scrollbar{
+  display:none
+}
+.project:hover{
+  flex:15;
+  overflow-y: scroll;
+}
+.project-title{
+  margin:0;
+  padding-left:1rem;
+  position: sticky;
+  top:0;
+  height:30px;
+  background-color: rgb(100, 149, 237,0.7);
+}
+.project-content{
+  opacity:0;
+  margin-top:20px;
+  transition:1s;
+  padding-left:1rem;
+  font-size:15px;
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows:1fr 5fr;
+  gap:10px
+}
+
+.project:hover>.project-content{
+  opacity:1;
+}
+.project-content-screenshots{
+  background-color: blue;
+}
+.project-content-techstack{
+  display:flex;
+  height:60px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: cornflowerblue;
+}
+.project-content-img{
+  height:60px;
+  object-fit: scale-down;
+}
+
+
+/* Page 5 - Hobbies */

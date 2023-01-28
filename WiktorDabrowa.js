@@ -6,10 +6,9 @@ function animation_skill(element){
     const difference = element.querySelector('.skill-diff')
     setTimeout(() => {
         skill.style.flex = skill.dataset.level;
-        skill.style.paddingLeft = '0.5rem'
+        skill.style.paddingLeft = '0.5rem';
         difference.style.flex = 5 - skill.dataset.level;
         console.log('Done')
-        // element.style.backgroundColor = `rgb(175, 238, 238,${element.dataset.level*0.2})`;
     }, 2000)
     console.log(element)
 }
@@ -83,6 +82,7 @@ function rotate() {
 
 function type(string, element_id, speed) {
     const tag = document.querySelector(`#${element_id}`)
+    tag.style.display = 'block'
     for (let i = 0; i < string.length+1 ; i++) {
         setTimeout(() => {tag.innerHTML = string.slice(0,i)}, i*speed)
     }
