@@ -1,17 +1,16 @@
 document.addEventListener('DOMContentLoaded', main)
 const lorem = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sapiente harum error? Enim delectus recusandae numquam dolores ratione quasi temporibus itaque fuga libero. Optio nihil reiciendis nostrum consectetur eum laborum architecto. Ipsam similique voluptatibus voluptatem sapiente delectus aperiam neque, corrupti aliquid, aut adipisci libero ratione nesciunt veritatis consectetur ullam cupiditate'
-
-function main() {
-    // Add Event Listeners
-    document.querySelector('#e-mail-anchor').addEventListener('click',copy_to_clipboard)
-    const buttons = document.querySelectorAll('.button')
-    buttons.forEach(element => {
-        element.addEventListener('click',rotate)
-    });
-    
-    // Animate landing page
-    setTimeout(() => type('Hello, my name is Wiktor Dąbrowa, glad to see you here!','page-1--name',100),4000)
-    setTimeout(() => type(lorem, 'page-1--text', 25), 10000)
+function open_hobby(i){
+    // i represents index of hobbies array  (which hobby to display)
+    const hobbies = document.querySelectorAll('.hobby')
+    const active_hobby = hobbies[i]
+    hobbies.forEach(hobby => {
+        if (hobby === active_hobby) {
+            hobby.classList.toggle('active')
+        } else {
+            hobby.classList.remove('active')
+        }
+    })
 }
 function copy_to_clipboard(){
     const e_mail = 'wiktor.dabrowa98@gmail.com'
@@ -31,6 +30,20 @@ function animation_skill(element){
         console.log('Done')
     }, 2000)
     console.log(element)
+}
+function toggle_project(i){
+    const projects = document.querySelectorAll('.project')
+    const active_project = projects[i]
+    console.log(active_project)
+    projects.forEach(project => {
+        if (project === active_project) {
+            project.classList.toggle('active')
+        } else {
+            project.classList.remove('active')
+            project.style.transform = 'scale(0.2)'
+        }
+    })
+
 }
 function render(element){
     // Starts animations after rotation if page wasn`t shown before
@@ -70,9 +83,12 @@ function render(element){
     // Handle page-4
     if (element.id === 'page-4') {
         const projects = element.querySelectorAll('.project')
-        for (i=0; i<projects.length; i++) {
-            projects[i].style.animation = `slide 1s forwards ${ 1 + i*0.2}s`
+        for (let i=0; i<projects.length; i++) {
+            projects[i].style.animation = `slide 1s forwards ${ 1.5 + i*0.2}s`;
+            console.log(i)
+            projects[i].addEventListener('click', () => toggle_project(i))
         }
+        
     }
     // Handle page-5
     if (element.id ==='page-5') {
@@ -82,18 +98,19 @@ function render(element){
             setTimeout(() => {
                 hobbies[i].style.opacity = '1'
             },
-            3000 + i*500
+            2000 + i*500
             )
             setTimeout(() => {
                 hobbies[i].style.transform = 'scale(1)'
-                hobbies[i].style.margin = '2rem'
+                //hobbies[i].style.margin = '2rem'
             },
-            5000)
+            4000)
             setTimeout(() => {
                 hobbies[i].style.color = 'white'
             },
             6000
             )
+            hobbies[i].addEventListener('click', () => open_hobby(i))
         }
     }
 
@@ -125,7 +142,6 @@ function rotate() {
     buttons[this.dataset.page - 1].disabled=true
 
 }
-
 function type(string, element_id, speed) {
     const tag = document.querySelector(`#${element_id}`)
     tag.style.display = 'block'
@@ -133,4 +149,15 @@ function type(string, element_id, speed) {
         setTimeout(() => {tag.innerHTML = string.slice(0,i)}, i*speed)
     }
 }
-
+function main() {
+    // Add Event Listeners
+    document.querySelector('#e-mail-anchor').addEventListener('click',copy_to_clipboard)
+    const buttons = document.querySelectorAll('.button')
+    buttons.forEach(element => {
+        element.addEventListener('click',rotate)
+    });
+    
+    // Animate landing page
+    setTimeout(() => type('Hello, my name is Wiktor Dąbrowa, glad to see you here!','page-1--name',100),4000)
+    setTimeout(() => type(lorem, 'page-1--text', 25), 10000)
+}
