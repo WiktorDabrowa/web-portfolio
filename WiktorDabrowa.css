@@ -131,11 +131,11 @@ body{
 }
 .page-1--photo-bg{
   background-color:palevioletred;
-  height:450px;
-  width:450px;
+  aspect-ratio: 1/1;
+  width:40%;
   transform: translate(200vw);
   position:absolute;
-  left:-46px;
+  left:-70px;
   top:100px;
   border-radius:50%;
   overflow: hidden;
@@ -144,9 +144,8 @@ body{
 }
 .page-1--photo{
   position:absolute;
-  top:15px;
-  height:450px;
-  width:450px;
+  aspect-ratio: 1/1;
+  width:100%;
   z-index:1;
   object-fit:scale-down;
   filter:grayscale(100%);
@@ -159,8 +158,8 @@ body{
 }
 .page-1--name{
   letter-spacing: 10px;
-  width:1000px;
-  margin-left:300px;
+  width:70%;
+  margin-left:15rem;
   height:5rem;
   z-index:1;
   mix-blend-mode: difference;
@@ -172,21 +171,7 @@ body{
   background-color: palevioletred;
   animation:blink infinite alternate 0.5s 2s
 }
-#page-1--text{
-  z-index:1;
-  width:1000px;
-  margin-left:300px;
-  color:white;
-  min-height: 10rem;
-  mix-blend-mode:difference;
-}
-#page-1--text:after{
-  content:'.';
-  opacity:0;
-  color:palevioletred;
-  background-color: palevioletred;
-  animation:blink infinite alternate 0.5s 2s
-}
+
 /* Page 2 - About me */
 #page-2{
   display:grid;
@@ -355,6 +340,7 @@ body{
 .project.active{
   flex:20;
   height:100%;
+  overflow-y:auto;
   border-radius:0;
 }
 .project:hover .project-content{
@@ -375,10 +361,15 @@ body{
   opacity: 0;
 }
 .project-content{
+  position:absolute;
+  top:0;
+  left:0;
   transition: 1s;
-  height:100%;
+  overflow-y: auto;
   opacity:0;
   padding-left:1rem;
+  padding-right: 1rem;
+  padding-bottom: 4rem;
   overflow: hidden;
   text-overflow: clip;
   flex-direction: column;
@@ -393,11 +384,9 @@ body{
 .project-text{
   width:60vw;
 }
-.project-screenshots{
-  flex:1
-}
 .project-screenshot{
-  height:150px;
+  width:calc(100% - 5rem);
+  border:1px solid black xxc;
   object-fit: contain;
 }
 
@@ -536,4 +525,41 @@ body{
  transition:2s;
  pointer-events: none;
  background-color: palegoldenrod;
+}
+@media only screen and (max-width: 600px) {
+  /* Navbar */
+  .nav {
+    gap:0
+  }
+  /* Page 1 */
+  #page-1{
+    justify-content: flex-start;
+  }
+  .page-1--photo-bg{
+    width:80%
+  }
+  .page-1--name{
+    margin-left:1rem;
+    margin-top:18rem;
+    width:auto;
+    font-size:1.5rem;
+  }
+  /* Page 2 */
+  #page-2{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 8fr;
+    padding:1rem;
+    position:relative
+  }
+  .page-2--text{
+    z-index: 2
+  }
+  #page-2--photo{
+    top:50%;
+    position:absolute;
+    right:-30%;
+    mix-blend-mode: multiply;
+    z-index:1
+  }
+
 }
